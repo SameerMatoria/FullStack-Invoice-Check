@@ -15,7 +15,7 @@ const BoxStyled = styled(Box)({
     }
 })
 
-function AddInvoice(){
+function AddInvoice({setAddInvoice}){
 
     const defaultObj = {
         vendor: '',
@@ -28,11 +28,11 @@ function AddInvoice(){
 
     const onValueChange = (e) => {
         setInvoice({ ...invoice ,[e.target.name]: e.target.value })
-        console.log(invoice.vendor);
     }
     
     const addNewInvoice = async() => {
         await saveInvoice({...invoice , amount: Number(invoice['amount'])})
+        setAddInvoice(false)
     }
    
 
